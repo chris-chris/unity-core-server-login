@@ -25,7 +25,7 @@ namespace DotnetCoreServer.Models
             using(MySqlConnection conn = db.GetConnection())
             {   
                 string query = String.Format(
-                    "SELECT user_id, facebook_id, facebook_name, facebook_photo_url, point, created_at, access_token FROM unity.tb_user WHERE facebook_id = '{0}'",
+                    "SELECT user_id, facebook_id, facebook_name, facebook_photo_url, point, created_at, access_token FROM tb_user WHERE facebook_id = '{0}'",
                      FacebookID);
 
                 Console.WriteLine(query);
@@ -111,7 +111,7 @@ namespace DotnetCoreServer.Models
         public User InsertUser(User user){
             
             string query = String.Format(
-                "INSERT INTO unity.tb_user (facebook_id, facebook_name, facebook_photo_url, point, access_token, created_at) VALUES ('{0}','{1}','{2}',{3}, '{4}', now())",
+                "INSERT INTO tb_user (facebook_id, facebook_name, facebook_photo_url, point, access_token, created_at) VALUES ('{0}','{1}','{2}',{3}, '{4}', now())",
                     user.FacebookID, user.FacebookName, user.FacebookPhotoURL, 0, user.AccessToken);
 
             Console.WriteLine(query);
