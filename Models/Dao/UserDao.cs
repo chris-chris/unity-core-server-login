@@ -7,7 +7,7 @@ namespace DotnetCoreServer.Models
 {
     public interface IUserDao{
         User FindUserByFUID(string FacebookID);
-        User GetUser(Int64 UserID);
+        User GetUser(long UserID);
         User InsertUser(User user);
         bool UpdateUser(User user);
     }
@@ -53,7 +53,7 @@ namespace DotnetCoreServer.Models
             return null;
         }
         
-        public User GetUser(Int64 UserID){
+        public User GetUser(long UserID){
             User user = new User();
             using(MySqlConnection conn = db.GetConnection())
             {   
