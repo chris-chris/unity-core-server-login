@@ -41,7 +41,7 @@ namespace DotnetCoreServer.Controllers
 
             RankResult result = new RankResult();
             
-            List<RankUser> list = rankDao.FriendRank(rankRequest.FriendList);
+            List<RankUser> list = rankDao.FriendRank(rankRequest.UserID, rankRequest.FriendList);
             
             result.Data = list;
 

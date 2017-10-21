@@ -6,7 +6,7 @@ namespace DotnetCoreServer.Models
 {
     public interface IRankDao{
         List<RankUser> TotalRank(int Start, int Count);
-        List<RankUser> FriendRank(List<string> FacebookIDList);
+        List<RankUser> FriendRank(long UserID, List<string> FacebookIDList);
     }
 
     public class RankDao : IRankDao
@@ -63,7 +63,7 @@ namespace DotnetCoreServer.Models
 
         }
         
-        public List<RankUser> FriendRank(List<string> FacebookIDList){
+        public List<RankUser> FriendRank(long UserID, List<string> FacebookIDList){
 
             for(int i = 0; i < FacebookIDList.Count; i++){
                 FacebookIDList[i] = string.Format("'{0}'", FacebookIDList[i]);
@@ -80,8 +80,8 @@ namespace DotnetCoreServer.Models
                         user_id, facebook_id, facebook_name, 
                         facebook_photo_url, point, created_at
                     FROM tb_user
-                    WHERE facebook_id IN ( {0} )",
-                     StrFacebookIDList);
+                    WHERE facebook_id IN ( {0} ) OR user_id = {1}",
+                     StrFacebookIDList, UserID);
 
                 Console.WriteLine(query);
                 int rank = 0;
