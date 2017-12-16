@@ -25,6 +25,18 @@ namespace DotnetCoreServer.Controllers
 
         }
 
+        [HttpPost]
+        public UserResult Update([FromBody] User requestUser){
+
+            UserResult result = new UserResult();
+            userDao.UpdateUser(requestUser);
+            
+            result.ResultCode = 1;
+            result.Message = "Success";
+
+            return result;
+        }
+
     }
 
 }
